@@ -2,43 +2,49 @@ package br.com.codepampa.model;
 
 public class Conta {
 
-    private int codigo;
-    private String correntista;
-    private float saldo;
+    protected int numero;
+    protected Pessoa correntista;
+    protected float saldo;
 
-    public int getCodigo() {
-        return codigo;
+    public Conta() {
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public Conta(int numero, Pessoa correntista, float saldo) {
+        this.numero = numero;
+        this.correntista = correntista;
+        this.saldo = saldo;
     }
 
-    public String getCorrentista() {
+    public Pessoa getCorrentista() {
         return correntista;
     }
 
-    public void setCorrentista(String correntista) {
+    public void setCorrentista(Pessoa correntista) {
         this.correntista = correntista;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 
     public float getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(float saldo) {
-        this.saldo = saldo;
-    }
 
     public void depositar(float valor) {
         saldo += valor;
     }
 
     public boolean sacar(float valor) {
-        if(valor > saldo){
+        if(0 <= valor || valor > this.saldo){
             return false;
         }
-        saldo -= valor;
+        this.saldo -= valor;
         return true;
     }
 

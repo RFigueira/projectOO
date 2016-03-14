@@ -13,8 +13,7 @@ public class appBank {
         Conta conta = new Conta();
         if (conta != null) {
 
-            conta.setCodigo(01);
-            conta.setCorrentista("Rodrigo F.");
+            conta.setNumero(01);
             conta.depositar(500.00F);
 
             if (conta.sacar(200.00F)) {
@@ -32,8 +31,7 @@ public class appBank {
     }
 
     public static void mostrarNaTela(Conta conta, boolean isSaque) {
-        System.out.println("Conta Numero........: " + conta.getCodigo());
-        System.out.println("Correntista.........: " + conta.getCorrentista());
+        System.out.println("Conta Numero........: " + conta.getNumero());
         System.out.println("Saldo pre saque.....: " + conta.getSaldo());
         if (isSaque) {
             System.out.println("Saldo pos saque.....: " + conta.getSaldo());
