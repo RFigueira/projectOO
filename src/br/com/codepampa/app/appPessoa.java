@@ -2,13 +2,15 @@ package br.com.codepampa.app;
 
 
 
+import br.com.codepampa.model.Pessoa;
+
 import java.util.Scanner;
 
 public class appPessoa {
 
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
-        FakePessoa pessoa = new FakePessoa();
+        Pessoa pessoa = new Pessoa();
         if(pessoa!= null){
             System.out.println("Pessoa criada com sucesso!!!");
 
@@ -28,11 +30,11 @@ public class appPessoa {
 
     }
 
-    public static void mostrarNaTela(FakePessoa pessoa){
-        System.out.println("Nome..........: "+ pessoa.nome);
-        System.out.println("Idade.........: "+ pessoa.idade);
-        System.out.println("Celular.......: "+ pessoa.celular);
-        System.out.println("e-mail........: "+ pessoa.email);
+    public static void mostrarNaTela(Pessoa pessoa){
+        System.out.println("Nome..........: "+ pessoa.getNome());
+        System.out.println("Idade.........: "+ pessoa.getIdade());
+        System.out.println("Celular.......: "+ pessoa.getCelular());
+        System.out.println("e-mail........: "+ pessoa.getEmail());
 
     }
 }

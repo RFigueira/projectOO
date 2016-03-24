@@ -1,15 +1,21 @@
 package br.com.codepampa.model;
 
-public class Conta {
+public abstract class Conta {
 
     protected int numero;
     protected Pessoa correntista;
     protected float saldo;
+    public final int DEPOSITAR = 0;
+    public final int SACAR = 1;
+    private static int numeroContas;
+
 
     public Conta() {
+        incrementarContas();
     }
 
     public Conta(int numero, Pessoa correntista, float saldo) {
+        this();
         this.numero = numero;
         this.correntista = correntista;
         this.saldo = saldo;
@@ -35,18 +41,29 @@ public class Conta {
         return saldo;
     }
 
+    public static int getNumeroContas(){
+        return numeroContas;
+    }
 
-    public void depositar(float valor) {
+
+
+    public final void depositar(float valor) {
         saldo += valor;
     }
 
-    public boolean sacar(float valor) {
-        if(0 <= valor || valor > this.saldo){
-            return false;
+    public abstract boolean sacar(float valor);
+
+    public final boolean movimentar(float valor, int tipo) {
+        if (tipo == DEPOSITAR) {
+            this.depositar(valor);
+        } else {
+            return this.sacar(valor);
         }
-        this.saldo -= valor;
         return true;
     }
 
+    private static void incrementarContas(){
+        ++numeroContas;
+    }
 
 }
